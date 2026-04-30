@@ -5,12 +5,8 @@ import com.audit.apimerge.model.MergeResult;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class PathParamMatcher {
-
-    private static final Pattern NAMED_PARAM_PATTERN = Pattern.compile("\\{([^}]+)\\}");
 
     public MergeResult match(String url, MergeRule rule) {
         String pattern = rule.getMatchPattern();

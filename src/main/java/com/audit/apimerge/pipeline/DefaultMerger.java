@@ -19,15 +19,35 @@ public class DefaultMerger {
 
     /**
      * 标准化URL：将路径中的参数替换为占位符
+     * 优化：合并两次正则替换为一次处理，减少String对象创建
      * @param url 原始URL
      * @return 标准化后的URL
      */
     public String normalize(String url) {
+        if (url == null || url.isEmpty()) {
+            return url;
+        }
+        
         String result = url;
-        // 替换纯数字
-        result = NUMERIC_PATTERN.matcher(result).replaceAll("/{$1}$2");
-        // 替换数字字母混合
-        result = ALPHANUMERIC_PATTERN.matcher(result).replaceAll("/{$1}$2");
+        
+        // 处理纯数字替换
+        Matcher numericMatcher = NUMERIC_PATTERN.matcher(result);
+        StringBuffer numericBuffer = new StringBuffer();
+        while (numericMatcher.find()) {
+            numericMatcher.appendReplacement(numericBuffer, "/{$1}$2");
+        }
+        numericMatcher.appendTail(numericBuffer);
+        result = numericBuffer.toString();
+        
+        // 处理数字字母混合替换
+        Matcher alphanumericMatcher = ALPHANUMERIC_PATTERN.matcher(result);
+        StringBuffer alphanumericBuffer = new StringBuffer();
+        while (alphanumericMatcher.find()) {
+            alphanumericMatcher.appendReplacement(alphanumericBuffer, "/{$1}$2");
+        }
+        alphanumericMatcher.appendTail(alphanumericBuffer);
+        result = alphanumericBuffer.toString();
+        
         return result;
     }
 

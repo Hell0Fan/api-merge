@@ -1,8 +1,6 @@
 package com.audit.apimerge.pipeline;
 
 import com.audit.apimerge.model.MergeResult;
-import java.util.HashMap;
-import java.util.Map;
 
 public class MergeContext {
     private String originalUrl;
