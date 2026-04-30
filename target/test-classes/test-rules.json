@@ -1,0 +1,57 @@
+{
+  "rules": [
+    {
+      "id": "rule-001",
+      "name": "用户接口合并",
+      "type": "path_param",
+      "priority": 1,
+      "matchPattern": "/api/user/*/detail",
+      "extractParams": ["userId"],
+      "outputPattern": "/api/user/{userId}/detail",
+      "enabled": true,
+      "description": "合并用户详情接口"
+    },
+    {
+      "id": "rule-002",
+      "name": "订单接口合并",
+      "type": "path_param",
+      "priority": 2,
+      "matchPattern": "/api/order/*/info",
+      "extractParams": ["orderId"],
+      "outputPattern": "/api/order/{orderId}/info",
+      "enabled": true,
+      "description": "合并订单信息接口"
+    },
+    {
+      "id": "rule-003",
+      "name": "健康检查接口",
+      "type": "exact",
+      "priority": 10,
+      "matchPattern": "/api/health",
+      "outputPattern": "/api/health",
+      "enabled": true,
+      "description": "精确匹配不合并"
+    },
+    {
+      "id": "rule-004",
+      "name": "内部接口合并",
+      "type": "prefix",
+      "priority": 20,
+      "matchPattern": "/api/internal/",
+      "outputPattern": "/api/internal",
+      "enabled": false,
+      "description": "内部接口前缀"
+    },
+    {
+      "id": "rule-005",
+      "name": "正则匹配订单接口",
+      "type": "regex",
+      "priority": 5,
+      "matchPattern": "/api/order/(\\d+)/detail",
+      "extractParams": ["orderId"],
+      "outputPattern": "/api/order/{orderId}/detail",
+      "enabled": true,
+      "description": "使用正则表达式匹配订单详情"
+    }
+  ]
+}

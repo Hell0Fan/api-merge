@@ -1,0 +1,17 @@
+clickhouse:
+  jdbc-url: "jdbc:clickhouse://localhost:8123/audit"
+  username: "default"
+  password: ""
+  batch-size: 1000
+
+mysql:
+  jdbc-url: "jdbc:mysql://localhost:3306/audit"
+  username: "root"
+  password: "password"
+  table: "merged_api"
+
+rule:
+  config-path: "rules.json"
+
+progress:
+  file: "progress.txt"

@@ -1,0 +1,5 @@
+com\audit\apimerge\pipeline\DefaultMergerPerformanceTest.class
+com\audit\apimerge\pipeline\MergePipelineTest.class
+com\audit\apimerge\progress\ProgressManagerTest.class
+com\audit\apimerge\pipeline\ComplexMergeTest.class
+com\audit\apimerge\pipeline\DefaultMergerTest.class
